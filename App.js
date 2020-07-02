@@ -12,10 +12,18 @@ function HomeScreen() {
   );
 }
 
-function SettingsScreen() {
+function DogsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
+      <Text>Dogs!</Text>
+    </View>
+  );
+}
+
+function CatsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Cats!</Text>
     </View>
   );
 }
@@ -34,7 +42,9 @@ export default function App() {
               iconName = focused
                 ? 'ios-information-circle'
                 : 'ios-information-circle-outline';
-            } else if (route.name === 'Settings') {
+            } else if (route.name === 'Dogs') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            } else if (route.name === 'Cats') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
             }
 
@@ -48,7 +58,8 @@ export default function App() {
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Dogs" component={DogsScreen} />
+        <Tab.Screen name="Cats" component={CatsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

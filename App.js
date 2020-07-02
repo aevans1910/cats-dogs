@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { cats } from './breeds'
+import { dogs } from './breeds'
+import Item from './components/Item'
 
 function HomeScreen() {
   return (
@@ -14,17 +18,29 @@ function HomeScreen() {
 
 function DogsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Dogs!</Text>
-    </View>
+    <SafeAreaView>
+      <FlatList 
+        data={dogs}
+        renderItem={({ item, index }) => {
+          return <Item title={`${index} ${item.breed}`} data={item}/>
+        }}
+        keyExtractor={item => item.breed}
+      />
+    </SafeAreaView>
   );
 }
 
 function CatsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Cats!</Text>
-    </View>
+    <SafeAreaView>
+      <FlatList 
+        data={cats}
+        renderItem={({ item, index }) => {
+          return <Item title={`${index} ${item.breed}`} data={item}/>
+        }}
+        keyExtractor={item => item.breed}
+      />
+    </SafeAreaView>
   );
 }
 
@@ -43,9 +59,9 @@ export default function App() {
                 ? 'ios-information-circle'
                 : 'ios-information-circle-outline';
             } else if (route.name === 'Dogs') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
+              iconName = 'ios-tennisball';
             } else if (route.name === 'Cats') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
+              iconName = 'ios-paw';
             }
 
             // You can return any component that you like here!

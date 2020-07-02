@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { cats } from './breeds'
 import { dogs } from './breeds'
@@ -55,17 +56,16 @@ export default function App() {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
+              iconName = 'home'
             } else if (route.name === 'Dogs') {
-              iconName = 'ios-tennisball';
+              iconName = 'dog';
             } else if (route.name === 'Cats') {
-              iconName = 'ios-paw';
+              iconName = 'cat';
             }
 
             // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            // return <Ionicons name={iconName} size={size} color={color} />;
+            return <Icon name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{

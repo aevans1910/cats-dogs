@@ -1,5 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+function Stars(v) {
+    const starsArray = []
+    for (let i = 0; i < v; i++) {
+        starsArray.push(<Icon name="star" size={10} key={`star-${i}`} />)
+    }
+    return starsArray
+}
 
 export default function Item({ title, data }) {
     const info = Object.keys(data)
@@ -10,7 +19,7 @@ export default function Item({ title, data }) {
         return true
     }).map((animal) => {
         return (
-            <Text style={styles.text}>{animal}: {data[animal]}</Text>
+            <Text style={styles.text} key={animal}>{animal}: {Stars(data[animal])}</Text>
         )
     })
     return (

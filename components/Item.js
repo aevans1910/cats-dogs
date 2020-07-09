@@ -19,7 +19,10 @@ export default function Item({ title, data }) {
         return true
     }).map((animal) => {
         return (
-            <Text style={styles.text} key={animal}>{animal}: {Stars(data[animal])}</Text>
+            <View key={animal} style={styles.row}>
+                <Text style={styles.text}>{animal}:</Text>
+                <Text>{Stars(data[animal])}</Text>
+            </View>
         )
     })
     return (
@@ -49,6 +52,15 @@ const styles = StyleSheet.create({
     },
 
     text: {
+        margin: 1,
+    },
+
+    row: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        flex: 1,
+        width: "100%",
         margin: 1,
     },
   });
